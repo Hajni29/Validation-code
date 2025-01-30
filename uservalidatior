@@ -1,0 +1,48 @@
+public class UserValidator {
+
+    // Method to validate a user's name
+    public static boolean validateName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("Name must not be empty");
+            return false;
+        }
+        return true;
+    }
+
+    // Method to validate a user's age
+    public static boolean validateAge(int age) {
+        if (age <= 0) {
+            System.out.println("Age must be a positive integer");
+            return false;
+        }
+        return true;
+    }
+
+    // Method to validate a user's email
+    public static boolean validateEmail(String email) {
+        // Simple regex for email validation
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        if (email == null || !email.matches(emailRegex)) {
+            System.out.println("Invalid email format");
+            return false;
+        }
+        return true;
+    }
+
+    // Method to validate the user's input
+    public static boolean validateUser(String name, int age, String email) {
+        return validateName(name) && validateAge(age) && validateEmail(email);
+    }
+
+    public static void main(String[] args) {
+        String name = "John Doe";
+        int age = 25;
+        String email = "john.doe@example.com";
+
+        if (validateUser(name, age, email)) {
+            System.out.println("Validation passed");
+        } else {
+            System.out.println("Validation failed");
+        }
+    }
+}
